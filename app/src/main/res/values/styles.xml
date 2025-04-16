@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <!-- Rounded Corner Style for Image -->
+    <style name="RoundedCornerImage" parent="">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+</resources>

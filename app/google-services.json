@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "545330944864",
+    "project_id": "motoriz-4ead1",
+    "storage_bucket": "motoriz-4ead1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545330944864:android:7ff53027ea01ad70311c05",
+        "android_client_info": {
+          "package_name": "com.rtechon.motoriz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545330944864-h258vrun3hr5ckkttajqib526qbgs94j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rtechon.motoriz",
+            "certificate_hash": "f1c4f52e11728d6903f64befbaee9d110f0ab01f"
+          }
+        },
+        {
+          "client_id": "545330944864-lik12jr3rvccpc64riisffpd007ql5qh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjy-XKzrSrRuGBgx3NlmRHE3vkGvNkxMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545330944864-lik12jr3rvccpc64riisffpd007ql5qh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

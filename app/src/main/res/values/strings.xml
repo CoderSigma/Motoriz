@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Motoriz</string>
+    <string name="logo_desc">Motoriz logo</string>
+    <string name="open_drawer">Open Navigation Drawer</string>
+    <string name="close_drawer">Close Navigation Drawer</string>
+    <string name="default_web_client_id">545330944864-lik12jr3rvccpc64riisffpd007ql5qh.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">2043879212769200</string>
+    <string name="fb_login_protocol_scheme">fb2043879212769200</string>
+</resources>
