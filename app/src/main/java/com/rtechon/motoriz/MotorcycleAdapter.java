@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MotorcycleAdapter extends RecyclerView.Adapter<MotorcycleAdapter.ViewHolder> {
+public class MotorcycleAdapter extends RecyclerView.Adapter<MotorcycleAdapter.MotorcycleViewHolder> {
 
     private final List<Motorcycle> motorcycleList;
     private final Context context;
@@ -22,26 +22,25 @@ public class MotorcycleAdapter extends RecyclerView.Adapter<MotorcycleAdapter.Vi
         this.motorcycleList = motorcycleList;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MotorcycleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_motorcycle, parent, false);
-        return new ViewHolder(view);
+        return new MotorcycleViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MotorcycleViewHolder holder, int position) {
         Motorcycle motorcycle = motorcycleList.get(position);
 
-        // Bind data to the views
         holder.modelTextView.setText(motorcycle.getModel());
         holder.yearTextView.setText("Year: " + motorcycle.getYear());
         holder.detailsTextView.setText(motorcycle.getDetails() + " Displacement.");
 
-        // Optional: If you want to use descriptionTextView, uncomment below and ensure it's in your layout
+        // Uncomment if descriptionTextView is in your layout
         // holder.descriptionTextView.setText(motorcycle.getDescription());
 
-        // Handle item click to open detail activity
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, MotorcycleDetailActivity.class);
             intent.putExtra("motorcycle_id", motorcycle.getId());
@@ -60,16 +59,16 @@ public class MotorcycleAdapter extends RecyclerView.Adapter<MotorcycleAdapter.Vi
         return motorcycleList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class MotorcycleViewHolder extends RecyclerView.ViewHolder {
         TextView modelTextView, yearTextView, detailsTextView, descriptionTextView;
 
-        public ViewHolder(View itemView) {
+        public MotorcycleViewHolder(View itemView) {
             super(itemView);
             modelTextView = itemView.findViewById(R.id.modelTextView);
             yearTextView = itemView.findViewById(R.id.yearTextView);
             detailsTextView = itemView.findViewById(R.id.detailsTextView);
 
-            // Initialize descriptionTextView only if you have it in your layout
+            // Uncomment only if this ID exists in your item_motorcycle.xml layout
             // descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
         }
     }

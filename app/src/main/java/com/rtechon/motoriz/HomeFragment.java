@@ -27,11 +27,11 @@ public class HomeFragment extends Fragment {
         // Manually adding different motorcycles to the list (expanding for the Philippine market)
         motorcycleList = new ArrayList<>();
 
-        motorcycleList.add(new Motorcycle(1, "Kawasaki Ninja 400", "2020",
-                "399 CC\nWeight: 366 lbs\nBore x Stroke: 70mm x 51.8mm\nFuel Type: Gasoline\nFuel System: Fuel Injection",
-                2500.0, new ArrayList<>(List.of(R.drawable.logo, R.drawable.facebook_icon))));
+        motorcycleList.add(new Motorcycle(1, "Yamaha NMAX", "2025",
+                "155 CC\nPower: 15 hp. \nTorque: 14.2 Nm. \nFuel Capacity: 7.1 liters. \nWeight: 366 lbs\nsingle-cylinder, 4-stroke, 4-valve, SOHC engine\nFuel Type: Gasoline\nFuel System: Fuel Injection \nTransmission: CVT. \nBrakes: Disc brakes on front and rear wheels with ABS. \nSuspension: Telescopic front forks and unit swing rear suspension. \nFeatures: Smart key system, USB-C charger, front pockets, Y-Connect app connectivity, advanced instrument cluster (Tech Max). ",
+                155900.0, new ArrayList<>(List.of(R.drawable.nmax,R.drawable.nmax1, R.drawable.nmax2))));
 
-        motorcycleList.add(new Motorcycle(2, "Yamaha YZF-R3", "2021",
+        motorcycleList.add(new Motorcycle(2, "Yamaha 1", "2021",
                 "321 CC\nWeight: 373 lbs\nBore x Stroke: 68mm x 44.1mm\nFuel Type: Gasoline\nFuel System: Fuel Injection",
                 2300.0, new ArrayList<>(List.of(R.drawable.logo))));
 
