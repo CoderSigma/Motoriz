@@ -1,18 +1,32 @@
 package com.rtechon.motoriz;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import java.util.List;
 
 public class MotorcycleDetailActivity extends AppCompatActivity {
 
     private TextView modelTextView, yearTextView, detailsTextView, priceTextView, financingTextView;
     private Button buyButton;
+    private ViewPager2 viewPager;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,49 +35,99 @@ public class MotorcycleDetailActivity extends AppCompatActivity {
         // Initialize Views
         modelTextView = findViewById(R.id.modelTextView);
         yearTextView = findViewById(R.id.yearTextView);
-        detailsTextView = findViewById(R.id.detailsTextView);
+        detailsTextView = findViewById(R.id.descriptionTextView);
         priceTextView = findViewById(R.id.priceTextView);
         financingTextView = findViewById(R.id.financingTextView);
         buyButton = findViewById(R.id.buyButton);
+        viewPager = findViewById(R.id.viewPager);
 
         // Set up the toolbar and back button
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Display back button
-
-        // Get the motorcycle ID passed via the Intent
-        int motorcycleId = getIntent().getIntExtra("motorcycle_id", -1);
-
-        // Fetch motorcycle details using the ID (this could be from a database, API, etc.)
-        if (motorcycleId != -1) {
-            Motorcycle motorcycle = getMotorcycleById(motorcycleId);
-            modelTextView.setText(motorcycle.getModel());
-            yearTextView.setText("Year: " + motorcycle.getYear());
-            detailsTextView.setText(motorcycle.getDetails());
-            priceTextView.setText("Price: " + motorcycle.getFormattedPrice());
-            financingTextView.setText("Financing: Available");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        // Handle Buy button click
-        buyButton.setOnClickListener(v -> {
-            // Here, you can add logic to redirect to the purchase form activity
-            Toast.makeText(this, "Redirecting to Purchase Form", Toast.LENGTH_SHORT).show();
-            // Start a new activity for the purchase form (you can create a new activity for that)
-        });
-    }
+        // Get intent extras
+        Intent intent = getIntent();
+        if (intent != null) {
+            String model = intent.getStringExtra("model");
+            String year = intent.getStringExtra("year");
+            String details = intent.getStringExtra("details");
+            double price = intent.getDoubleExtra("price", 0.0);
+            List<Integer> imgList = intent.getIntegerArrayListExtra("images");
 
-    // Simulating a method to get motorcycle by ID (you'd fetch this data from a database or API)
-    private Motorcycle getMotorcycleById(int id) {
-        // Replace this with actual data fetching logic
-        return new Motorcycle(id, "YAMAHA YTX", "2023", "125 CC Displacement", 150000.0);
+            if (model != null && year != null && details != null && imgList != null) {
+                modelTextView.setText(model);
+                yearTextView.setText("Year: " + year);
+                detailsTextView.setText(details);
+                priceTextView.setText("Price: ₱" + String.format("%.2f", price));
+                financingTextView.setText("Financing: Available");
+
+                // Pass images to ViewPager
+                ImageAdapter adapter = new ImageAdapter(imgList);
+                viewPager.setAdapter(adapter);
+
+                buyButton.setOnClickListener(v -> {
+                    Toast.makeText(this, "Redirecting to Purchase Form", Toast.LENGTH_SHORT).show();
+                    Intent purchaseIntent = new Intent(this, PurchaseFormActivity.class);
+                    purchaseIntent.putExtra("motorcycle_model", model);
+                    purchaseIntent.putExtra("motorcycle_price", price);
+                    startActivity(purchaseIntent);
+                });
+
+            } else {
+                Toast.makeText(this, "Motorcycle details not found", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        } else {
+            Toast.makeText(this, "Intent data is missing", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Handle the back button press
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Inner Adapter Class for ViewPager2
+    public static class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
+
+        private final List<Integer> images;
+
+        public ImageAdapter(List<Integer> images) {
+            this.images = images;
+        }
+
+        public static class ImageViewHolder extends RecyclerView.ViewHolder {
+            ImageView imageView;
+
+            public ImageViewHolder(@NonNull View itemView) {
+                super(itemView);
+                imageView = itemView.findViewById(R.id.imageView);
+            }
+        }
+
+        @NonNull
+        @Override
+        public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image, parent, false);
+            return new ImageViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
+            holder.imageView.setImageResource(images.get(position));
+        }
+
+        @Override
+        public int getItemCount() {
+            return images.size();
+        }
     }
 }

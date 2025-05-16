@@ -1,37 +1,35 @@
-<!-- res/layout/nav_header.xml -->
+<!-- nav_header.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@color/Green"> <!-- Optional background -->
 
-    <!-- Profile Image -->
     <ImageView
-        android:id="@+id/nav_header_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_profile" />
+        android:id="@+id/logo"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/logo"
+        android:contentDescription="App Logo" />
 
-    <!-- Username -->
     <TextView
-        android:id="@+id/nav_header_username"
+        android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="18sp"
+        android:text="MOTORIZ"
         android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:gravity="center" />
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp" />
 
-    <!-- Email (optional) -->
     <TextView
-        android:id="@+id/nav_header_email"
+        android:id="@+id/app_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="user@example.com"
+        android:text="Smart solutions for you"
+        android:textColor="@android:color/white"
         android:textSize="14sp"
-        android:gravity="center"
         android:layout_marginTop="4dp" />
-
 </LinearLayout>

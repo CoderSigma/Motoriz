@@ -35,7 +35,7 @@ android {
 
 dependencies {
     implementation(libs.appcompat)
-    implementation(libs.material) // Keep only one version of Material Design
+    implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     testImplementation(libs.junit)
@@ -43,8 +43,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     // Facebook SDK
-    implementation("com.facebook.android:facebook-login:latest.release")
-    implementation("com.facebook.android:facebook-android-sdk:12.3.0")
+    implementation("com.facebook.android:facebook-android-sdk:16.3.0")
 
     // Firebase SDK
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
@@ -58,4 +57,18 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.android.volley:volley:1.2.1")
+
+    // AndroidX dependencies (make sure you're using AndroidX versions)
+    implementation("androidx.browser:browser:1.4.0")
+    implementation("androidx.core:core:1.13.0")
+
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.google.android.material:material:1.10.0")
+}
+
+configurations.all {
+    resolutionStrategy {
+        force("androidx.browser:browser:1.4.0")
+        force("androidx.core:core:1.13.0")
+    }
 }

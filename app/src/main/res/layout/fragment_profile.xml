@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:padding="16dp">
 
     <TextView
@@ -12,7 +12,101 @@
         android:layout_height="wrap_content"
         android:text="Profile"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
 
-    <!-- Add more elements for user information if needed, e.g., email, profile picture -->
+    <TextView
+        android:id="@+id/nameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:textSize="18sp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/emailValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email@example.com"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/phoneValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+63 *** *** ****"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="Payment History" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOTORCYCLE INSTALLMENT TEST VIEW"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:focusable="true"/>
+            <TextView
+                android:id="@+id/myTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOTORCYCLE INSTALLMENT TEST VIEW"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:focusable="true"/>
+            <TextView
+                android:id="@+id/myTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOTORCYCLE INSTALLMENT TEST VIEW"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:focusable="true"/>
+            <TextView
+                android:id="@+id/myTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOTORCYCLE INSTALLMENT TEST VIEW"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:focusable="true"/>
+            <TextView
+                android:id="@+id/myTextView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOTORCYCLE INSTALLMENT TEST VIEW"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 </LinearLayout>
